@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<title>Mobile Video Player</title>
+
+<style>
+  body {
+    margin: 0;
+    background: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  video {
+    width: 100%;
+    height: 70vh;
+    background: black;
+    object-fit: contain;
+  }
+
+  .controls {
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+  }
+
+  button {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    background: #1db954;
+    color: white;
+  }
+
+  button:active {
+    background: #14833b;
+  }
+</style>
+</head>
+
+<body>
+
+<video id="video" controls playsinline>
+  <source src="video1.mp4" type="video/mp4">
+</video>
+
+<div class="controls">
+  <button onclick="nextVideo()">▶ Next</button>
+</div>
+
+<script>
+  const video = document.getElementById("video");
+
+  const playlist = [
+    "video1.mp4",
+    "video2.mp4",
+    "video3.mp4"
+  ];
+
+  let index = 0;
+
+  function nextVideo() {
+    index = (index + 1) % playlist.length;
+    video.src = playlist[index];
+    video.play();
+  }
+</script>
+
+</body>
+</html>
